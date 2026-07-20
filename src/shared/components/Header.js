@@ -47,18 +47,18 @@ export default function Header({ onMenuClick, showMenuButton = true }) {
   };
 
   return (
-    <header className="shrink-0 flex items-center justify-between gap-3 px-4 h-16 bg-[#00a8cc] text-white z-20" translate="no">
+    <header className="shrink-0 flex items-center justify-between gap-3 px-4 h-16 bg-surface border-b border-border-subtle z-20" translate="no">
       {/* Left side: Logo + Hamburger */}
       <div className="flex items-center gap-6 h-full">
         <Link href="/dashboard" className="flex items-center gap-2 h-full" suppressHydrationWarning>
-          <img src="/logo-e404r.svg" alt="E404R" className="w-8 h-8 filter brightness-0 invert" suppressHydrationWarning />
-          <h1 className="text-xl font-bold tracking-tight text-white hidden sm:block" suppressHydrationWarning>
+          <img src="/logo-e404r.svg" alt="E404R" className="w-8 h-8" suppressHydrationWarning />
+          <h1 className="text-xl font-extrabold tracking-tight text-[#00a8cc] hidden sm:block" suppressHydrationWarning>
             {APP_CONFIG.name}
           </h1>
         </Link>
         
         {showMenuButton && (
-          <button onClick={onMenuClick} className="text-white/80 hover:text-white transition-colors lg:hidden" suppressHydrationWarning>
+          <button onClick={onMenuClick} className="text-text-muted hover:text-text-main transition-colors lg:hidden" suppressHydrationWarning>
             <span className="material-symbols-outlined text-2xl" suppressHydrationWarning>menu</span>
           </button>
         )}
@@ -70,7 +70,7 @@ export default function Header({ onMenuClick, showMenuButton = true }) {
         
         <button
           onClick={() => setDonateOpen(true)}
-          className="flex items-center gap-1.5 px-3 h-8 rounded-lg bg-white/10 hover:bg-white/20 transition-colors text-sm font-medium text-white"
+          className="flex items-center gap-1.5 px-3 h-8 rounded-lg border border-[#00a8cc] text-[#00a8cc] hover:bg-[#00a8cc]/10 transition-colors text-sm font-semibold"
           aria-label="Donate"
           suppressHydrationWarning
         >
@@ -78,9 +78,9 @@ export default function Header({ onMenuClick, showMenuButton = true }) {
           <span className="hidden sm:inline" suppressHydrationWarning>Donate</span>
         </button>
         
-        <div className="text-white/90 hover:text-white"><ThemeToggle /></div>
-        <div className="text-white/90 hover:text-white"><HeaderLanguage /></div>
-        <div className="text-white/90 hover:text-white"><HeaderMenu onLogout={handleLogout} /></div>
+        <div className="flex items-center"><ThemeToggle /></div>
+        <div className="flex items-center"><HeaderLanguage /></div>
+        <div className="flex items-center"><HeaderMenu onLogout={handleLogout} /></div>
       </div>
       <DonateModal isOpen={donateOpen} onClose={() => setDonateOpen(false)} />
     </header>
@@ -97,19 +97,19 @@ function HeaderSearch() {
 
   return (
     <div className="relative w-[160px] sm:w-[220px]">
-      <span className="material-symbols-outlined absolute left-2 top-1/2 -translate-y-1/2 text-white/60 text-[16px] pointer-events-none">search</span>
+      <span className="material-symbols-outlined absolute left-2 top-1/2 -translate-y-1/2 text-text-muted text-[16px] pointer-events-none">search</span>
       <input
         type="text"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         placeholder={placeholder}
-        className="w-full h-8 pl-7 pr-7 rounded border border-white/20 bg-white/10 text-sm text-white placeholder:text-white/50 focus:outline-none focus:border-white/50 transition-colors"
+        className="w-full h-8 pl-7 pr-7 rounded-lg border border-border-subtle bg-surface-2 text-sm text-text-main placeholder:text-text-muted focus:outline-none focus:border-primary transition-colors"
       />
       {query && (
         <button
           type="button"
           onClick={() => setQuery("")}
-          className="absolute right-1 top-1/2 -translate-y-1/2 text-white/60 hover:text-white p-0.5"
+          className="absolute right-1 top-1/2 -translate-y-1/2 text-text-muted hover:text-text-main p-0.5"
         >
           <span className="material-symbols-outlined text-[16px]">close</span>
         </button>

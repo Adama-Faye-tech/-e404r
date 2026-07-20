@@ -6,10 +6,7 @@ import Link from "next/link";
 // ─── Stat Card ────────────────────────────────────────────────────────────────
 function StatCard({ label, value, sub, subIcon, accent = "#00a8cc", subPositive = true }) {
   return (
-    <div
-      className="rounded-xl border border-[#e2e8f0] bg-white p-5 flex flex-col gap-3 shadow-sm hover:shadow-md transition-shadow overflow-hidden"
-      style={{ borderLeft: `4px solid ${accent}` }}
-    >
+    <div className="rounded-xl border border-[#e2e8f0] bg-white p-5 flex flex-col gap-3 shadow-sm hover:shadow-md transition-shadow overflow-hidden">
       <div className="text-xs font-semibold uppercase tracking-widest" style={{ color: accent, opacity: 0.85 }}>
         {label}
       </div>
