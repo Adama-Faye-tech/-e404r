@@ -28,12 +28,14 @@ export default function ThemeToggle({ className, variant = "default" }) {
       className={cn(variants[variant], className)}
       aria-label={`Switch to ${isDark ? "light" : "dark"} mode`}
       title={`Switch to ${isDark ? "light" : "dark"} mode`}
+      suppressHydrationWarning
     >
       <span
         className={cn(
           "material-symbols-outlined text-[22px]",
           variant === "card" && "transition-transform duration-300 group-hover:rotate-12"
         )}
+        suppressHydrationWarning
       >
         {isDark ? "light_mode" : "dark_mode"}
       </span>

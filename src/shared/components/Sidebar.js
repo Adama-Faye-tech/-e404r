@@ -115,9 +115,9 @@ export default function Sidebar({ onClose }) {
     <>
       <aside className="flex w-64 flex-col bg-[#2b3c4e] text-white/80 transition-colors duration-300 min-h-full">
         {/* User Profile Section */}
-        <div className="px-6 py-8 flex flex-col gap-1 border-b border-white/10">
-          <div className="text-white font-medium">Hi, {displayName || "User"}</div>
-          <div className="text-sm text-white/50 flex items-center gap-1 cursor-pointer hover:text-white transition-colors">
+        <div className="px-6 py-8 flex flex-col gap-1 border-b border-white/10" suppressHydrationWarning>
+          <div className="text-white font-medium" suppressHydrationWarning>Hi, {displayName || "User"}</div>
+          <div className="text-sm text-white/50 flex items-center gap-1 cursor-pointer hover:text-white transition-colors" suppressHydrationWarning>
             Super Admin <span className="material-symbols-outlined text-[14px]">expand_more</span>
           </div>
         </div>
