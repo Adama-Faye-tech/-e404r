@@ -93,7 +93,7 @@ export default function PageHeader() {
   const { title, description, breadcrumbs } = pageInfo;
 
   return (
-    <div className="w-full bg-white border-b border-border-subtle p-6 mb-6">
+    <div className="w-full bg-white border-b border-border-subtle p-6 mb-6" translate="no">
       {breadcrumbs.length > 0 ? (
         <div className="flex items-center gap-2 text-xl font-medium text-text-main">
           {breadcrumbs.map((crumb, index) => (
@@ -104,7 +104,7 @@ export default function PageHeader() {
               ) : (
                 <div className="flex items-center gap-2">
                   {crumb.image && <ProviderIcon src={crumb.image} alt={crumb.label} size={28} className="object-contain rounded" fallbackText={crumb.label.slice(0, 2).toUpperCase()} />}
-                  <h1 className="text-2xl font-light text-[#5c6e80] tracking-tight">{translate(crumb.label)}</h1>
+                  <h1 className="text-2xl font-light text-[#5c6e80] tracking-tight" suppressHydrationWarning>{translate(crumb.label)}</h1>
                 </div>
               )}
             </div>
@@ -112,8 +112,8 @@ export default function PageHeader() {
         </div>
       ) : (
         <div>
-          <h1 className="text-3xl font-light text-[#5c6e80] tracking-tight mb-1">{translate(title)}</h1>
-          {description && <p className="text-sm text-text-muted">{translate(description)}</p>}
+          <h1 className="text-3xl font-light text-[#5c6e80] tracking-tight mb-1" suppressHydrationWarning>{translate(title)}</h1>
+          {description && <p className="text-sm text-text-muted" suppressHydrationWarning>{translate(description)}</p>}
         </div>
       )}
     </div>
