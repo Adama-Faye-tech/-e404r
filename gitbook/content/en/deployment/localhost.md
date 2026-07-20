@@ -1,0 +1,164 @@
+# 🏠 Localhost Deployment
+
+Run E404R on your local machine for development and personal use.
+
+---
+
+## 📦 Installation
+
+Install E404R globally via npm:
+
+```bash
+npm install -g e404r
+```
+
+**Requirements:**
+- Node.js 20 or higher
+- npm 9 or higher
+
+---
+
+## 🚀 Starting the Server
+
+Start E404R with a single command:
+
+```bash
+e404r
+```
+
+The dashboard will automatically open in your browser at `http://localhost:3000`
+
+**Default Configuration:**
+- **Dashboard**: `http://localhost:3000`
+- **API Endpoint**: `http://localhost:20128/v1`
+- **Data Directory**: `~/.e404r`
+
+---
+
+## 🔧 Configuration
+
+### Custom Data Directory
+
+Set a custom data directory using environment variable:
+
+```bash
+DATA_DIR=/path/to/data e404r
+```
+
+### Custom Port
+
+The API port (20128) and dashboard port (3000) are configured in the application. To change them, you'll need to modify the source code or use environment variables if supported.
+
+---
+
+## 🛑 Stopping the Server
+
+Press `Ctrl+C` in the terminal where E404R is running.
+
+```bash
+# In the terminal running e404r
+^C  # Press Ctrl+C
+```
+
+The server will gracefully shut down and save all data.
+
+---
+
+## 🔄 Restarting the Server
+
+Simply run the start command again:
+
+```bash
+e404r
+```
+
+All your configurations, API keys, and combos are preserved in the data directory.
+
+---
+
+## 📊 Updating E404R
+
+Update to the latest version:
+
+```bash
+npm update -g e404r
+```
+
+Check your current version:
+
+```bash
+npm list -g e404r
+```
+
+---
+
+## 🔍 Troubleshooting
+
+### Port Already in Use
+
+If port 20128 or 3000 is already in use:
+
+```bash
+# Find process using the port (macOS/Linux)
+lsof -i :20128
+lsof -i :3000
+
+# Kill the process
+kill -9 <PID>
+```
+
+### Permission Errors
+
+If you encounter permission errors during installation:
+
+```bash
+# Use sudo (not recommended)
+sudo npm install -g e404r
+
+# Or fix npm permissions (recommended)
+mkdir ~/.npm-global
+npm config set prefix '~/.npm-global'
+echo 'export PATH=~/.npm-global/bin:$PATH' >> ~/.bashrc
+source ~/.bashrc
+```
+
+### Data Directory Issues
+
+If the data directory is not accessible:
+
+```bash
+# Check permissions
+ls -la ~/.e404r
+
+# Fix permissions
+chmod 755 ~/.e404r
+```
+
+---
+
+## 📁 Data Directory Structure
+
+```
+~/.e404r/
+├── db.json           # Main database (providers, combos, settings)
+├── logs/             # Application logs
+└── cache/            # Temporary cache files
+```
+
+**Backup Your Data:**
+
+```bash
+# Backup
+cp -r ~/.e404r ~/.e404r.backup
+
+# Restore
+cp -r ~/.e404r.backup ~/.e404r
+```
+
+---
+
+## 🔗 Next Steps
+
+- [Connect Providers](/providers/subscription.md)
+- [Create Combos](/features/combos.md)
+- [Integrate with CLI Tools](/integration/cursor.md)

@@ -1,0 +1,123 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import PropTypes from "prop-types";
+import HeaderMenu from "@/shared/components/HeaderMenu";
+import HeaderLanguage from "@/shared/components/HeaderLanguage";
+import ThemeToggle from "@/shared/components/ThemeToggle";
+import DonateModal from "@/shared/components/DonateModal";
+import { useHeaderSearchStore } from "@/store/headerSearchStore";
+import { APP_CONFIG } from "@/shared/constants/config";
+
+export default function Header({ onMenuClick, showMenuButton = true }) {
+  const [displayName, setDisplayName] = useState("");
+  const [loginMethod, setLoginMethod] = useState("");
+  const [donateOpen, setDonateOpen] = useState(false);
+
+  useEffect(() => {
+    let cancelled = false;
+    async function loadAuthStatus() {
+      try {
+        const res = await fetch("/api/auth/status", { cache: "no-store" });
+        if (!res.ok) return;
+        const data = await res.json();
+        if (!cancelled) {
+          setDisplayName(data?.displayName || data?.oidcName || data?.oidcEmail || "");
+          setLoginMethod(data?.loginMethod || "");
+        }
+      } catch {
+        if (!cancelled) {
+          setDisplayName("");
+          setLoginMethod("");
+        }
+      }
+    }
+    loadAuthStatus();
+    return () => { cancelled = true; };
+  }, []);
+
+  const handleLogout = async () => {
+    try {
+      const res = await fetch("/api/auth/logout", { method: "POST" });
+      if (res.ok) window.location.assign("/login");
+    } catch (err) {
+      console.error("Failed to logout:", err);
+    }
+  };
+
+  return (
+    <header className="shrink-0 flex items-center justify-between gap-3 px-4 h-16 bg-[#00a8cc] text-white z-20">
+      {/* Left side: Logo + Hamburger */}
+      <div className="flex items-center gap-6 h-full">
+        <Link href="/dashboard" className="flex items-center gap-2 h-full">
+          <img src="/logo-e404r.svg" alt="E404R" className="w-8 h-8 filter brightness-0 invert" />
+          <h1 className="text-xl font-bold tracking-tight text-white hidden sm:block">
+            {APP_CONFIG.name}
+          </h1>
+        </Link>
+        
+        {showMenuButton && (
+          <button onClick={onMenuClick} className="text-white/80 hover:text-white transition-colors lg:hidden">
+            <span className="material-symbols-outlined text-2xl">menu</span>
+          </button>
+        )}
+      </div>
+
+      {/* Right side: Actions */}
+      <div className="flex items-center gap-2 shrink-0">
+        <HeaderSearch />
+        
+        <button
+          onClick={() => setDonateOpen(true)}
+          className="flex items-center gap-1.5 px-3 h-8 rounded-lg bg-white/10 hover:bg-white/20 transition-colors text-sm font-medium text-white"
+          aria-label="Donate"
+        >
+          <span className="material-symbols-outlined text-[18px]">volunteer_activism</span>
+          <span className="hidden sm:inline">Donate</span>
+        </button>
+        
+        <div className="text-white/90 hover:text-white"><ThemeToggle /></div>
+        <div className="text-white/90 hover:text-white"><HeaderLanguage /></div>
+        <div className="text-white/90 hover:text-white"><HeaderMenu onLogout={handleLogout} /></div>
+      </div>
+      <DonateModal isOpen={donateOpen} onClose={() => setDonateOpen(false)} />
+    </header>
+  );
+}
+
+function HeaderSearch() {
+  const visible = useHeaderSearchStore((s) => s.visible);
+  const query = useHeaderSearchStore((s) => s.query);
+  const placeholder = useHeaderSearchStore((s) => s.placeholder);
+  const setQuery = useHeaderSearchStore((s) => s.setQuery);
+
+  if (!visible) return null;
+
+  return (
+    <div className="relative w-[160px] sm:w-[220px]">
+      <span className="material-symbols-outlined absolute left-2 top-1/2 -translate-y-1/2 text-white/60 text-[16px] pointer-events-none">search</span>
+      <input
+        type="text"
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+        placeholder={placeholder}
+        className="w-full h-8 pl-7 pr-7 rounded border border-white/20 bg-white/10 text-sm text-white placeholder:text-white/50 focus:outline-none focus:border-white/50 transition-colors"
+      />
+      {query && (
+        <button
+          type="button"
+          onClick={() => setQuery("")}
+          className="absolute right-1 top-1/2 -translate-y-1/2 text-white/60 hover:text-white p-0.5"
+        >
+          <span className="material-symbols-outlined text-[16px]">close</span>
+        </button>
+      )}
+    </div>
+  );
+}
+
+Header.propTypes = {
+  onMenuClick: PropTypes.func,
+  showMenuButton: PropTypes.bool,
+};

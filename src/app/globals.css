@@ -1,0 +1,645 @@
+/* ============================================================
+   E404R Design System — Engine 404 Router
+   "One Gateway. Infinite Intelligence."
+   Palette: Deep Black · Cyber Blue · AI Green · Neon Accents
+   ============================================================ */
+@import "tailwindcss" source("../../");
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Hide icon ligature text until font is ready */
+.material-symbols-outlined { visibility: hidden; }
+.fonts-loaded .material-symbols-outlined { visibility: visible; }
+
+/* ============================================================
+   E404R Brand Palette — Cyber Intelligence Theme
+   Primary: Electric Blue #00D4FF (Cyber Blue)
+   Accent: AI Green #00FF88
+   Background: Deep Space #050d1a
+   ============================================================ */
+:root {
+  /* E404R Brand — Cyber Blue scale */
+  --color-brand-50:  #e0f9ff;
+  --color-brand-100: #b3f0ff;
+  --color-brand-200: #66e2ff;
+  --color-brand-300: #33d9ff;
+  --color-brand-400: #1ad1ff;
+  --color-brand-500: #00D4FF;   /* Primary — Cyber Blue */
+  --color-brand-600: #00a8cc;
+  --color-brand-700: #007d99;
+  --color-brand-800: #005266;
+  --color-brand-900: #002733;
+
+  /* AI Green Accent */
+  --color-neon-green: #00FF88;
+  --color-neon-green-dim: #00cc6e;
+  --color-neon-blue: #00D4FF;
+  --color-neon-blue-dim: #00a8cc;
+  --color-neon-purple: #9b59f5;
+
+  /* Primary aliases */
+  --color-primary: var(--color-brand-500);
+  --color-primary-hover: var(--color-brand-600);
+
+  /* Surfaces & backgrounds — LIGHT mode (for accessibility) */
+  --color-bg:       #f0f4f8;
+  --color-bg-alt:   #e4ecf4;
+  --color-surface:  #ffffff;
+  --color-surface-2: #f4f8fc;
+  --color-surface-3: #e8eef5;
+  --color-sidebar:  rgba(230, 240, 250, 0.92);
+
+  /* Borders */
+  --color-border:        #c8d8e8;
+  --color-border-subtle: #dde8f0;
+  --color-border-cyber:  rgba(0, 212, 255, 0.25);
+
+  /* Text */
+  --color-text:         #0a1628;
+  --color-text-main:    #0a1628;
+  --color-text-muted:   #4a6080;
+  --color-text-subtle:  #7a90a8;
+
+  /* Status */
+  --color-danger:  #ef4444;
+  --color-success: #00FF88;
+  --color-warning: #f59e0b;
+  --color-info:    #00D4FF;
+
+  /* Radius */
+  --radius-brand:    10px;
+  --radius-brand-lg: 14px;
+  --radius-cyber:    6px;
+
+  /* Shadows */
+  --shadow-soft:    0 1px 2px 0 rgba(0,0,0,0.06);
+  --shadow-cyber:   0 0 20px rgba(0,212,255,0.15), 0 2px 12px -2px rgba(0,212,255,0.10);
+  --shadow-elevated: 0 12px 28px -4px rgba(10,22,40,0.12);
+  --shadow-elev:
+    inset 0 1px 0 0 rgba(255,255,255,0.9),
+    0 1px 2px rgba(10,22,40,0.06),
+    0 12px 36px -8px rgba(10,22,40,0.12);
+  --shadow-focus: 0 0 0 3px rgba(0,212,255,0.25);
+  --shadow-neon-green: 0 0 12px rgba(0,255,136,0.4), 0 0 24px rgba(0,255,136,0.2);
+  --shadow-neon-blue:  0 0 12px rgba(0,212,255,0.4), 0 0 24px rgba(0,212,255,0.2);
+
+  color-scheme: light;
+}
+
+/* ============================================================
+   DARK MODE — Primary E404R experience
+   Deep Space aesthetic, cyber neon accents
+   ============================================================ */
+.dark {
+  /* Brand scale same */
+  --color-brand-50:  #e0f9ff;
+  --color-brand-100: #b3f0ff;
+  --color-brand-200: #66e2ff;
+  --color-brand-300: #33d9ff;
+  --color-brand-400: #1ad1ff;
+  --color-brand-500: #00D4FF;
+  --color-brand-600: #00a8cc;
+  --color-brand-700: #007d99;
+  --color-brand-800: #005266;
+  --color-brand-900: #002733;
+
+  --color-primary: #00D4FF;
+  --color-primary-hover: #33d9ff;
+
+  /* Deep Space surfaces */
+  --color-bg:        #050d1a;   /* Noir profond — espace */
+  --color-bg-alt:    #070f1f;
+  --color-surface:   #0a1628;   /* Surface cyber */
+  --color-surface-2: #0d1d33;
+  --color-surface-3: #102240;
+  --color-sidebar:   rgba(7, 15, 31, 0.95);
+
+  /* Cyber borders */
+  --color-border:        rgba(0, 212, 255, 0.12);
+  --color-border-subtle: rgba(0, 212, 255, 0.06);
+  --color-border-cyber:  rgba(0, 212, 255, 0.30);
+
+  /* Text */
+  --color-text:         #e0f0ff;
+  --color-text-main:    #e0f0ff;
+  --color-text-muted:   #7aa0c0;
+  --color-text-subtle:  #4a6880;
+
+  /* Status (bright on dark) */
+  --color-danger:  #ff4d4d;
+  --color-success: #00FF88;
+  --color-warning: #fbbf24;
+  --color-info:    #00D4FF;
+
+  --shadow-soft:    0 1px 2px 0 rgba(0,0,0,0.5);
+  --shadow-cyber:   0 0 20px rgba(0,212,255,0.2), 0 2px 12px -2px rgba(0,212,255,0.15);
+  --shadow-elevated: 0 12px 28px -4px rgba(0, 0, 0, 0.7);
+  --shadow-elev:
+    inset 0 1px 0 0 rgba(0,212,255,0.08),
+    0 1px 2px rgba(0,0,0,0.5),
+    0 16px 48px -8px rgba(0,0,0,0.7);
+  --shadow-focus: 0 0 0 3px rgba(0,212,255,0.25);
+  --shadow-neon-green: 0 0 12px rgba(0,255,136,0.5), 0 0 24px rgba(0,255,136,0.25);
+  --shadow-neon-blue:  0 0 12px rgba(0,212,255,0.5), 0 0 24px rgba(0,212,255,0.25);
+
+  color-scheme: dark;
+}
+
+/* ============================================================
+   Fix native select dropdowns in dark mode
+   ============================================================ */
+select { color-scheme: light; }
+.dark select { color-scheme: dark; }
+.dark select option {
+  background-color: var(--color-surface);
+  color: var(--color-text-main);
+}
+
+/* ============================================================
+   Tailwind @theme tokens mapping
+   ============================================================ */
+@theme inline {
+  /* Brand */
+  --color-brand-50:  var(--color-brand-50);
+  --color-brand-100: var(--color-brand-100);
+  --color-brand-200: var(--color-brand-200);
+  --color-brand-300: var(--color-brand-300);
+  --color-brand-400: var(--color-brand-400);
+  --color-brand-500: var(--color-brand-500);
+  --color-brand-600: var(--color-brand-600);
+  --color-brand-700: var(--color-brand-700);
+  --color-brand-800: var(--color-brand-800);
+  --color-brand-900: var(--color-brand-900);
+
+  /* Neon accents */
+  --color-neon-green:  var(--color-neon-green);
+  --color-neon-blue:   var(--color-neon-blue);
+  --color-neon-purple: var(--color-neon-purple);
+
+  /* Primary aliases */
+  --color-primary:       var(--color-primary);
+  --color-primary-hover: var(--color-primary-hover);
+
+  /* Semantic */
+  --color-bg:            var(--color-bg);
+  --color-bg-alt:        var(--color-bg-alt);
+  --color-surface:       var(--color-surface);
+  --color-surface-2:     var(--color-surface-2);
+  --color-surface-3:     var(--color-surface-3);
+  --color-sidebar:       var(--color-sidebar);
+  --color-border:        var(--color-border);
+  --color-border-subtle: var(--color-border-subtle);
+  --color-border-cyber:  var(--color-border-cyber);
+  --color-text:          var(--color-text);
+  --color-text-main:     var(--color-text-main);
+  --color-text-muted:    var(--color-text-muted);
+  --color-text-subtle:   var(--color-text-subtle);
+  --color-accent:        var(--color-brand-500);
+  --color-danger:        var(--color-danger);
+  --color-success:       var(--color-success);
+  --color-warning:       var(--color-warning);
+  --color-info:          var(--color-info);
+
+  /* Static per-mode */
+  --color-bg-light:           #f0f4f8;
+  --color-bg-dark:            #050d1a;
+  --color-surface-light:      #ffffff;
+  --color-surface-dark:       #0a1628;
+  --color-sidebar-light:      #e4ecf4;
+  --color-sidebar-dark:       #070f1f;
+  --color-border-light:       #c8d8e8;
+  --color-border-dark:        rgba(0,212,255,0.12);
+  --color-text-main-light:    #0a1628;
+  --color-text-main-dark:     #e0f0ff;
+  --color-text-muted-light:   #4a6080;
+  --color-text-muted-dark:    #7aa0c0;
+
+  /* Radius */
+  --radius-brand:    var(--radius-brand);
+  --radius-brand-lg: var(--radius-brand-lg);
+  --radius-cyber:    var(--radius-cyber);
+
+  /* Shadows */
+  --shadow-soft:        var(--shadow-soft);
+  --shadow-cyber:       var(--shadow-cyber);
+  --shadow-elevated:    var(--shadow-elevated);
+  --shadow-elev:        var(--shadow-elev);
+  --shadow-focus:       var(--shadow-focus);
+  --shadow-neon-green:  var(--shadow-neon-green);
+  --shadow-neon-blue:   var(--shadow-neon-blue);
+
+  /* Fonts */
+  --font-sans:  'Space Grotesk', 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --font-mono:  'JetBrains Mono', 'Fira Code', ui-monospace, monospace;
+}
+
+/* ============================================================
+   Base styles
+   ============================================================ */
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text-main);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* E404R cyber selection */
+::selection {
+  background-color: rgba(0, 212, 255, 0.20);
+  color: var(--color-brand-500);
+}
+.dark ::selection {
+  background-color: rgba(0, 212, 255, 0.25);
+  color: var(--color-brand-300);
+}
+
+input, textarea {
+  accent-color: var(--color-primary);
+}
+
+/* ============================================================
+   Custom Scrollbar — Cyber thin
+   ============================================================ */
+.custom-scrollbar::-webkit-scrollbar { width: 4px; }
+.custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 212, 255, 0.25);
+  border-radius: 20px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-primary);
+}
+
+.scroll-thin-x {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 212, 255, 0.35) transparent;
+}
+.dark .scroll-thin-x {
+  scrollbar-color: rgba(0, 212, 255, 0.35) transparent;
+}
+.scroll-thin-x::-webkit-scrollbar { height: 3px; }
+.scroll-thin-x::-webkit-scrollbar-track { background: transparent; }
+.scroll-thin-x::-webkit-scrollbar-thumb {
+  background: rgba(0, 212, 255, 0.35);
+  border-radius: 3px;
+}
+
+/* ============================================================
+   Reusable cards — Cyber glass style
+   ============================================================ */
+.card-soft {
+  background-color: var(--color-surface);
+  box-shadow: var(--shadow-soft);
+  border-radius: var(--radius-brand-lg);
+}
+.card-elev {
+  background-color: var(--color-surface);
+  box-shadow: var(--shadow-elev);
+  border-radius: var(--radius-brand-lg);
+}
+/* Glassmorphism cyber card */
+.card-cyber {
+  background: rgba(10, 22, 40, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--color-border-cyber);
+  border-radius: var(--radius-brand-lg);
+  box-shadow: var(--shadow-cyber);
+}
+.card-cyber-green {
+  background: rgba(10, 22, 40, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(0, 255, 136, 0.20);
+  border-radius: var(--radius-brand-lg);
+  box-shadow: 0 0 20px rgba(0,255,136,0.10);
+}
+
+/* ============================================================
+   Background patterns
+   ============================================================ */
+.bg-hero-gradient {
+  background: linear-gradient(180deg, var(--color-bg-alt) 0%, var(--color-bg) 100%);
+}
+
+/* Cyber grid dot pattern */
+.cyber-grid-bg {
+  background-color: var(--color-bg);
+  background-image:
+    radial-gradient(circle at 15% 20%, rgba(0, 212, 255, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 85% 80%, rgba(0, 255, 136, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(155, 89, 245, 0.04) 0%, transparent 60%);
+}
+.dark .cyber-grid-bg {
+  background-image:
+    radial-gradient(circle at 15% 20%, rgba(0, 212, 255, 0.12) 0%, transparent 50%),
+    radial-gradient(circle at 85% 80%, rgba(0, 255, 136, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(155, 89, 245, 0.06) 0%, transparent 60%);
+}
+
+/* E404R scan-line grid */
+.e404r-grid {
+  background-image:
+    linear-gradient(to right, var(--color-accent) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--color-accent) 1px, transparent 1px);
+  background-size: 40px 40px;
+  opacity: 0.04;
+}
+.dark .e404r-grid { opacity: 0.03; }
+
+/* Vibrancy glass */
+.bg-vibrancy {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  background: rgba(240, 244, 248, 0.80);
+}
+.dark .bg-vibrancy {
+  background: rgba(5, 13, 26, 0.85);
+}
+
+/* ============================================================
+   Buttons
+   ============================================================ */
+button {
+  -webkit-user-select: none;
+  user-select: none;
+}
+button:not(:disabled),
+[role="button"]:not([aria-disabled="true"]),
+label[for],
+summary,
+select {
+  cursor: pointer;
+}
+button:disabled,
+[role="button"][aria-disabled="true"] {
+  cursor: not-allowed;
+}
+
+/* E404R CTA — Cyber glow pulse */
+@keyframes cyberGlowPulse {
+  0%, 100% { box-shadow: 0 8px 24px -8px rgba(0,212,255,0.5), 0 0 0 0 rgba(0,212,255,0.4); }
+  50%       { box-shadow: 0 12px 32px -8px rgba(0,212,255,0.7), 0 0 0 8px rgba(0,212,255,0); }
+}
+@keyframes cyberShimmer {
+  0%   { transform: translateX(-120%) skewX(-20deg); }
+  100% { transform: translateX(220%) skewX(-20deg); }
+}
+.btn-cta {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  animation: cyberGlowPulse 2.4s ease-in-out infinite;
+}
+.btn-cta::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 50%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0,212,255,0.25), transparent);
+  animation: cyberShimmer 2.8s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+.btn-cta > * { position: relative; z-index: 2; }
+
+/* Green CTA variant */
+@keyframes greenGlowPulse {
+  0%, 100% { box-shadow: 0 8px 24px -8px rgba(0,255,136,0.5), 0 0 0 0 rgba(0,255,136,0.4); }
+  50%       { box-shadow: 0 12px 32px -8px rgba(0,255,136,0.7), 0 0 0 8px rgba(0,255,136,0); }
+}
+.btn-cta-green { animation: greenGlowPulse 2.4s ease-in-out infinite; }
+
+/* ============================================================
+   Animations
+   ============================================================ */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.animate-spin { animation: spin 1s linear infinite; }
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.5; }
+}
+.animate-pulse { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+
+/* Neon border glow */
+@keyframes neonBorderGlow {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(0,212,255,0.3), 0 0 10px rgba(0,212,255,0.2);
+    border-color: rgba(0,212,255,0.5);
+  }
+  50% {
+    box-shadow: 0 0 10px rgba(0,212,255,0.6), 0 0 20px rgba(0,212,255,0.4), 0 0 35px rgba(0,212,255,0.2);
+    border-color: rgba(0,212,255,0.9);
+  }
+}
+.animate-border-glow { animation: neonBorderGlow 2s ease-in-out infinite; }
+
+/* Green neon glow */
+@keyframes neonGreenGlow {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(0,255,136,0.3), 0 0 10px rgba(0,255,136,0.2);
+    border-color: rgba(0,255,136,0.5);
+  }
+  50% {
+    box-shadow: 0 0 10px rgba(0,255,136,0.6), 0 0 20px rgba(0,255,136,0.4);
+    border-color: rgba(0,255,136,0.9);
+  }
+}
+.animate-green-glow { animation: neonGreenGlow 2s ease-in-out infinite; }
+
+@keyframes slideInFromRight {
+  from { transform: translateX(100%); opacity: 0; }
+  to   { transform: translateX(0);    opacity: 1; }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes slideInFromTop {
+  from { transform: translateY(-10px); opacity: 0; }
+  to   { transform: translateY(0);     opacity: 1; }
+}
+.slide-in-right { animation: slideInFromRight 0.25s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+.fade-in        { animation: fadeIn 0.2s ease-out forwards; }
+.slide-in-top   { animation: slideInFromTop 0.18s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50%       { opacity: 0.7; transform: scale(1.05); }
+}
+.animate-pulse-glow { animation: pulseGlow 3s ease-in-out infinite; }
+
+/* E404R scanning line effect */
+@keyframes scanLine {
+  0%   { transform: translateY(-100%); opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 1; }
+  100% { transform: translateY(100vh); opacity: 0; }
+}
+.e404r-scan-line {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(0,212,255,0.6), rgba(0,255,136,0.4), transparent);
+  animation: scanLine 4s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* Data stream upward */
+@keyframes dataStream {
+  0%   { transform: translateY(0) scaleY(1); opacity: 0; }
+  10%  { opacity: 0.8; }
+  90%  { opacity: 0.8; }
+  100% { transform: translateY(-200px) scaleY(0.5); opacity: 0; }
+}
+.animate-data-stream { animation: dataStream 1.5s ease-in-out forwards; }
+
+/* ============================================================
+   Topology — Router card animations (preserved + recolored)
+   ============================================================ */
+@keyframes topology-router-pulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow:
+      0 0 8px #00D4FF,
+      0 0 20px rgba(0, 212, 255, 0.5),
+      0 0 32px rgba(0, 255, 136, 0.3),
+      inset 0 0 10px rgba(0, 212, 255, 0.2);
+  }
+  50% {
+    transform: scale(1.06);
+    box-shadow:
+      0 0 14px #00D4FF,
+      0 0 28px rgba(0, 212, 255, 0.7),
+      0 0 44px rgba(0, 255, 136, 0.5),
+      inset 0 0 14px rgba(0, 212, 255, 0.3);
+  }
+}
+@keyframes topology-router-icon-shake {
+  0%, 100% { transform: rotate(0deg) scale(1); filter: drop-shadow(0 0 2px #00D4FF); }
+  25%       { transform: rotate(-5deg) scale(1.08); filter: drop-shadow(0 0 6px #00D4FF); }
+  75%       { transform: rotate(5deg) scale(1.08); filter: drop-shadow(0 0 6px #00FF88); }
+}
+@keyframes topology-router-label-flicker {
+  0%, 100% { text-shadow: 0 0 6px #00D4FF, 0 0 12px #00FF88; }
+  50%       { text-shadow: 0 0 10px #fff, 0 0 18px #00D4FF; }
+}
+@keyframes topology-edge-dash   { to { stroke-dashoffset: -36; } }
+@keyframes topology-edge-flicker {
+  0%, 100% { opacity: 0.85; }
+  40%       { opacity: 1; }
+  55%       { opacity: 0.55; }
+  70%       { opacity: 1; }
+}
+
+.topology-router-core  { animation: topology-router-pulse 0.75s ease-in-out infinite; border-color: #00D4FF !important; }
+.topology-router-icon  { animation: topology-router-icon-shake 0.45s ease-in-out infinite; }
+.topology-router-label { animation: topology-router-label-flicker 0.7s ease-in-out infinite; }
+.topology-router-badge { box-shadow: 0 0 10px #00D4FF, 0 0 16px rgba(0, 255, 136, 0.5); }
+.topology-edge-kame   { stroke-dasharray: 8 6;  animation: topology-edge-dash 0.22s linear infinite; }
+.topology-edge-halo   { animation: topology-edge-flicker 0.18s steps(2) infinite; }
+.topology-edge-plasma { stroke-dasharray: 14 10; animation: topology-edge-dash 0.18s linear infinite, topology-edge-flicker 0.22s steps(3) infinite; }
+
+/* ============================================================
+   React Flow controls — E404R theme
+   ============================================================ */
+.react-flow-controls-custom {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-cyber);
+  border-radius: 10px;
+  box-shadow: var(--shadow-cyber);
+  overflow: hidden;
+}
+.react-flow-controls-custom button {
+  background: var(--color-surface);
+  color: var(--color-text-main);
+  border: 0;
+  border-bottom: 1px solid var(--color-border);
+}
+.react-flow-controls-custom button:last-child { border-bottom: 0; }
+.react-flow-controls-custom button:hover { background: var(--color-surface-2); }
+
+/* ============================================================
+   Status indicators — Cyber dots
+   ============================================================ */
+.status-online  { color: var(--color-neon-green); }
+.status-offline { color: var(--color-danger); }
+.status-unknown { color: var(--color-text-subtle); }
+
+@keyframes statusPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(0,255,136,0.4); }
+  50%       { box-shadow: 0 0 0 4px rgba(0,255,136,0); }
+}
+.status-dot-online {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--color-neon-green);
+  animation: statusPulse 2s ease-in-out infinite;
+}
+.status-dot-offline {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--color-danger);
+}
+
+/* ============================================================
+   E404R Metric cards
+   ============================================================ */
+.metric-cyber {
+  position: relative;
+  overflow: hidden;
+}
+.metric-cyber::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-brand-500), transparent);
+  opacity: 0.6;
+}
+
+/* ============================================================
+   Changelog markdown body (preserved)
+   ============================================================ */
+.changelog-body h1 {
+  font-size: 1.4rem; font-weight: 700;
+  margin: 1.5rem 0 0.75rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--color-border);
+}
+.changelog-body h1:first-child { margin-top: 0; }
+.changelog-body h2 {
+  font-size: 1.05rem; font-weight: 600;
+  margin: 1rem 0 0.5rem;
+  color: var(--color-primary);
+}
+.changelog-body h3 {
+  font-size: 0.95rem; font-weight: 600;
+  margin: 0.75rem 0 0.4rem;
+}
+.changelog-body ul { list-style: disc; padding-left: 1.5rem; margin: 0.5rem 0; }
+.changelog-body li { margin: 0.25rem 0; line-height: 1.6; }
+.changelog-body p  { margin: 0.5rem 0; line-height: 1.6; }
+.changelog-body code {
+  background: var(--color-surface-2);
+  padding: 0.1rem 0.35rem;
+  border-radius: 4px;
+  font-size: 0.875em;
+  font-family: var(--font-mono), monospace;
+  color: var(--color-neon-green);
+}
+.changelog-body a { color: var(--color-primary); text-decoration: underline; }
+.changelog-body hr { border: none; border-top: 1px solid var(--color-border); margin: 1.5rem 0; }
+
+/* Traffic lights (macOS compat) */
+.traffic-lights { display: flex; gap: 8px; }
+.traffic-light { width: 12px; height: 12px; border-radius: 50%; }
+.traffic-light.red    { background: #FF5F56; }
+.traffic-light.yellow { background: #FFBD2E; }
+.traffic-light.green  { background: #27C93F; }
