@@ -74,6 +74,18 @@ e404r
 ```
 🎉 Le tableau de bord s'ouvre sur `http://localhost:20128`
 
+<img width="1353" height="605" alt="image" src="https://github.com/user-attachments/assets/868bd800-ef27-49db-aa26-edf6e6b0ff82" />
+
+<img width="824" height="507" alt="image" src="https://github.com/user-attachments/assets/1d54d0fd-818b-475a-b524-fd9a95baa70b" />
+
+<img width="1336" height="609" alt="image" src="https://github.com/user-attachments/assets/3d71861c-280f-4354-93a2-1d7f7c389695" />
+
+<img width="1354" height="617" alt="image" src="https://github.com/user-attachments/assets/7a12aa2e-3d77-4c2b-8a4d-014db3646455" />
+
+
+
+
+
 **2. Connectez un fournisseur GRATUIT (sans inscription requise)**
 Dans le Dashboard, allez dans **Providers** → Connectez *Kiro AI* (~50 crédits/mois gratuits : Claude 4.5 + GLM-5 + MiniMax) ou *OpenCode Free* (sans authentification).
 
