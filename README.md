@@ -85,6 +85,12 @@ Paramétrez votre outil avec :
 
 C'est tout ! Vous codez maintenant avec des modèles d'IA gratuits.
 
+
+
+
+<img width="1352" height="606" alt="image" src="https://github.com/user-attachments/assets/e2cecffd-9979-4080-a1c0-814f66e0d9af" />
+
+
 ---
 
 ## 💡 Fonctionnalités Clés
