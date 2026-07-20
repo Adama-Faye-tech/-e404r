@@ -50,16 +50,16 @@ export default function Header({ onMenuClick, showMenuButton = true }) {
     <header className="shrink-0 flex items-center justify-between gap-3 px-4 h-16 bg-[#00a8cc] text-white z-20">
       {/* Left side: Logo + Hamburger */}
       <div className="flex items-center gap-6 h-full">
-        <Link href="/dashboard" className="flex items-center gap-2 h-full">
-          <img src="/logo-e404r.svg" alt="E404R" className="w-8 h-8 filter brightness-0 invert" />
-          <h1 className="text-xl font-bold tracking-tight text-white hidden sm:block">
+        <Link href="/dashboard" className="flex items-center gap-2 h-full" suppressHydrationWarning>
+          <img src="/logo-e404r.svg" alt="E404R" className="w-8 h-8 filter brightness-0 invert" suppressHydrationWarning />
+          <h1 className="text-xl font-bold tracking-tight text-white hidden sm:block" suppressHydrationWarning>
             {APP_CONFIG.name}
           </h1>
         </Link>
         
         {showMenuButton && (
-          <button onClick={onMenuClick} className="text-white/80 hover:text-white transition-colors lg:hidden">
-            <span className="material-symbols-outlined text-2xl">menu</span>
+          <button onClick={onMenuClick} className="text-white/80 hover:text-white transition-colors lg:hidden" suppressHydrationWarning>
+            <span className="material-symbols-outlined text-2xl" suppressHydrationWarning>menu</span>
           </button>
         )}
       </div>
@@ -72,9 +72,10 @@ export default function Header({ onMenuClick, showMenuButton = true }) {
           onClick={() => setDonateOpen(true)}
           className="flex items-center gap-1.5 px-3 h-8 rounded-lg bg-white/10 hover:bg-white/20 transition-colors text-sm font-medium text-white"
           aria-label="Donate"
+          suppressHydrationWarning
         >
-          <span className="material-symbols-outlined text-[18px]">volunteer_activism</span>
-          <span className="hidden sm:inline">Donate</span>
+          <span className="material-symbols-outlined text-[18px]" suppressHydrationWarning>volunteer_activism</span>
+          <span className="hidden sm:inline" suppressHydrationWarning>Donate</span>
         </button>
         
         <div className="text-white/90 hover:text-white"><ThemeToggle /></div>

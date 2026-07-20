@@ -70,11 +70,11 @@ export default function DashboardLayout({ children }) {
           <Sidebar onClose={() => setSidebarOpen(false)} />
         </div>
 
-        {/* Main content: min-w-0 + overflow-x-hidden prevent horizontal bleed */}
-        <main className="flex flex-col flex-1 h-full min-w-0 overflow-x-hidden relative bg-[#f4f8fc]">
+        {/* Main content: min-w-0 prevents flex child from overflowing sidebar */}
+        <main className="flex flex-col flex-1 min-w-0 overflow-x-hidden relative bg-[#f4f8fc]" style={{ maxWidth: "100%" }}>
           <PageHeader />
-          <div className={`flex-1 overflow-y-auto overflow-x-hidden custom-scrollbar ${pathname === "/dashboard/basic-chat" ? "" : "px-4 md:px-8 pb-10"}`}>
-            <div className={`${pathname === "/dashboard/basic-chat" ? "flex-1 w-full h-full flex flex-col" : "max-w-7xl mx-auto w-full"}`}>
+          <div className={`flex-1 overflow-y-auto overflow-x-hidden custom-scrollbar ${pathname === "/dashboard/basic-chat" ? "" : "px-4 md:px-6 lg:px-8 pb-10 pt-2"}`}>
+            <div className={`${pathname === "/dashboard/basic-chat" ? "flex-1 w-full h-full flex flex-col" : "max-w-6xl mx-auto w-full"}`}>
               {children}
             </div>
           </div>

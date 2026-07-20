@@ -4,29 +4,32 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 
 // ─── Stat Card ────────────────────────────────────────────────────────────────
-function StatCard({ label, value, sub, subIcon, accent = "#00a8cc" }) {
+function StatCard({ label, value, sub, subIcon, accent = "#00a8cc", subPositive = true }) {
   return (
     <div
-      className="rounded-xl border border-[#e2e8f0] bg-white p-5 flex flex-col gap-3 shadow-sm hover:shadow-md transition-shadow min-w-0"
+      className="rounded-xl border border-[#e2e8f0] bg-white p-5 flex flex-col gap-3 shadow-sm hover:shadow-md transition-shadow overflow-hidden"
       style={{ borderLeft: `4px solid ${accent}` }}
     >
-      <div className="text-xs font-semibold uppercase tracking-widest text-[#64748b]">
+      <div className="text-xs font-semibold uppercase tracking-widest" style={{ color: accent, opacity: 0.85 }}>
         {label}
       </div>
       <div
-        className="text-3xl font-bold font-mono tracking-tight truncate"
+        className="text-3xl font-bold font-mono tracking-tight"
         style={{ color: accent }}
       >
         {value}
       </div>
       {sub && (
-        <div className="flex items-center gap-1 text-xs text-[#22c55e] font-medium truncate">
+        <div
+          className="flex items-center gap-1 text-xs font-medium"
+          style={{ color: subPositive ? "#16a34a" : "#dc2626" }}
+        >
           {subIcon && (
             <span className="material-symbols-outlined text-[14px] shrink-0">
               {subIcon}
             </span>
           )}
-          <span className="truncate">{sub}</span>
+          <span className="leading-tight">{sub}</span>
         </div>
       )}
     </div>
@@ -51,9 +54,9 @@ function QuickAction({ href, icon, title, desc, accent = "#00a8cc" }) {
         </div>
         <div className="min-w-0 flex-1">
           <div className="font-semibold text-[#1e293b] text-sm">{title}</div>
-          <div className="text-xs text-[#64748b] truncate">{desc}</div>
+          <div className="text-xs text-[#64748b] mt-0.5 leading-snug">{desc}</div>
         </div>
-        <span className="material-symbols-outlined text-[#94a3b8] group-hover:text-[#00a8cc] transition-colors shrink-0">
+        <span className="material-symbols-outlined text-[#94a3b8] group-hover:text-[#00a8cc] transition-colors shrink-0 text-[20px]">
           chevron_right
         </span>
       </div>
@@ -85,13 +88,13 @@ export default function OverviewPageClient() {
   }, []);
 
   return (
-    <div className="flex flex-col gap-6 w-full min-w-0">
+    <div className="flex flex-col gap-6 w-full">
 
       {/* ── Top bar ─────────────────────────────────────────────────── */}
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
           <h2 className="text-xl font-bold text-[#1e293b]">E404R — System Overview</h2>
-          <p className="text-sm text-[#64748b]">Engine 404 Router — All systems nominal.</p>
+          <p className="text-sm text-[#64748b] mt-0.5">Engine 404 Router — All systems nominal.</p>
         </div>
         <div className="flex items-center gap-3 flex-wrap">
           {/* Status badge */}
@@ -127,12 +130,14 @@ export default function OverviewPageClient() {
           sub="+12% vs yesterday"
           subIcon="trending_up"
           accent="#00a8cc"
+          subPositive={true}
         />
         <StatCard
           label="Active Providers"
           value={metrics.activeProviders}
           sub="Out of 104 available"
           accent="#6366f1"
+          subPositive={true}
         />
         <StatCard
           label="Cache Hit Rate"
@@ -140,19 +145,21 @@ export default function OverviewPageClient() {
           sub="High efficiency mode"
           subIcon="bolt"
           accent="#a855f7"
+          subPositive={true}
         />
         <StatCard
           label="Total Cost (24h)"
           value={metrics.totalCost}
-          sub="-$5.40 via Smart Router"
+          sub="-$5.40 saved via Smart Router"
           subIcon="savings"
           accent="#f59e0b"
+          subPositive={true}
         />
       </div>
 
       {/* ── Quick Actions ────────────────────────────────────────────── */}
       <div>
-        <h3 className="text-sm font-semibold text-[#64748b] uppercase tracking-wider mb-3">
+        <h3 className="text-xs font-semibold text-[#64748b] uppercase tracking-wider mb-3">
           Quick Actions
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -160,46 +167,46 @@ export default function OverviewPageClient() {
             href="/dashboard/providers"
             icon="dns"
             title="Configure Providers"
-            desc="Add API keys or local models"
+            desc="Add API keys, local models and OAuth accounts"
             accent="#00a8cc"
           />
           <QuickAction
             href="/dashboard/security"
             icon="security"
             title="Security Center"
-            desc="View logs and manage access"
+            desc="View audit logs and manage API access"
             accent="#22c55e"
           />
           <QuickAction
             href="/dashboard/combos"
             icon="layers"
             title="Models & Combos"
-            desc="Set up routing combos with fallback"
+            desc="Build routing combos with automatic fallback"
             accent="#6366f1"
           />
           <QuickAction
             href="/dashboard/usage"
             icon="monitoring"
             title="Usage & Analytics"
-            desc="Monitor token consumption and cost"
+            desc="Monitor token consumption and costs over time"
             accent="#f59e0b"
           />
         </div>
       </div>
 
-      {/* ── Live Traffic placeholder (compact) ──────────────────────── */}
-      <div className="rounded-xl border border-[#e2e8f0] bg-white p-6 flex items-center gap-5 shadow-sm">
-        <div className="w-12 h-12 rounded-full bg-[#00a8cc]/10 flex items-center justify-center shrink-0 border border-[#00a8cc]/20">
-          <span className="material-symbols-outlined text-[#00a8cc] text-2xl">query_stats</span>
+      {/* ── Live Traffic Banner ──────────────────────────────────────── */}
+      <div className="rounded-xl border border-[#e2e8f0] bg-gradient-to-r from-[#00a8cc]/5 to-[#6366f1]/5 p-5 flex flex-wrap items-center gap-4 shadow-sm">
+        <div className="w-11 h-11 rounded-full bg-[#00a8cc]/10 flex items-center justify-center shrink-0 border border-[#00a8cc]/20">
+          <span className="material-symbols-outlined text-[#00a8cc] text-xl">query_stats</span>
         </div>
-        <div className="min-w-0">
-          <h3 className="text-base font-semibold text-[#1e293b]">Live Traffic Analytics</h3>
-          <p className="text-sm text-[#64748b]">
-            Smart Router is actively balancing traffic across providers. Real-time charts appear here during active sessions.
+        <div className="min-w-0 flex-1">
+          <h3 className="text-sm font-semibold text-[#1e293b]">Live Traffic Analytics</h3>
+          <p className="text-xs text-[#64748b] mt-0.5">
+            Smart Router is actively balancing traffic across providers. Open Analytics to view real-time charts.
           </p>
         </div>
-        <Link href="/dashboard/usage" className="ml-auto shrink-0">
-          <button className="text-sm font-semibold text-[#00a8cc] hover:text-[#0090b0] flex items-center gap-1 transition-colors whitespace-nowrap">
+        <Link href="/dashboard/usage" className="shrink-0">
+          <button className="text-sm font-semibold text-white bg-[#00a8cc] hover:bg-[#0090b0] px-4 py-2 rounded-lg flex items-center gap-1.5 transition-colors shadow-sm">
             View Analytics
             <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
           </button>
