@@ -46,13 +46,13 @@ When the user needs a specific capability, fetch that skill's `SKILL.md` from it
 
 | Capability | Raw URL |
 |---|---|
-| Chat / code-gen | https://raw.githubusercontent.com/decolua/e404r/refs/heads/master/skills/e404r-chat/SKILL.md |
-| Image generation | https://raw.githubusercontent.com/decolua/e404r/refs/heads/master/skills/e404r-image/SKILL.md |
-| Text-to-speech | https://raw.githubusercontent.com/decolua/e404r/refs/heads/master/skills/e404r-tts/SKILL.md |
-| Speech-to-text | https://raw.githubusercontent.com/decolua/e404r/refs/heads/master/skills/e404r-stt/SKILL.md |
-| Embeddings | https://raw.githubusercontent.com/decolua/e404r/refs/heads/master/skills/e404r-embeddings/SKILL.md |
-| Web search | https://raw.githubusercontent.com/decolua/e404r/refs/heads/master/skills/e404r-web-search/SKILL.md |
-| Web fetch (URL → markdown) | https://raw.githubusercontent.com/decolua/e404r/refs/heads/master/skills/e404r-web-fetch/SKILL.md |
+| Chat / code-gen | https://raw.githubusercontent.com/Adama-Faye-tech/-e404r/refs/heads/main/skills/e404r-chat/SKILL.md |
+| Image generation | https://raw.githubusercontent.com/Adama-Faye-tech/-e404r/refs/heads/main/skills/e404r-image/SKILL.md |
+| Text-to-speech | https://raw.githubusercontent.com/Adama-Faye-tech/-e404r/refs/heads/main/skills/e404r-tts/SKILL.md |
+| Speech-to-text | https://raw.githubusercontent.com/Adama-Faye-tech/-e404r/refs/heads/main/skills/e404r-stt/SKILL.md |
+| Embeddings | https://raw.githubusercontent.com/Adama-Faye-tech/-e404r/refs/heads/main/skills/e404r-embeddings/SKILL.md |
+| Web search | https://raw.githubusercontent.com/Adama-Faye-tech/-e404r/refs/heads/main/skills/e404r-web-search/SKILL.md |
+| Web fetch (URL → markdown) | https://raw.githubusercontent.com/Adama-Faye-tech/-e404r/refs/heads/main/skills/e404r-web-fetch/SKILL.md |
 
 ## Errors
 

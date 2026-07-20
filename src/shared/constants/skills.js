@@ -1,8 +1,8 @@
 // Agent Skills metadata — single source of truth for /dashboard/skills page.
 // Each skill = 1 raw GitHub URL the user copies and pastes to any AI agent.
 
-const REPO = "decolua/e404r";
-const BRANCH = "master";
+const REPO = "Adama-Faye-tech/-e404r";
+const BRANCH = "main";
 const SKILL_PATH = "skills";
 
 export const SKILLS_REPO_URL = `https://github.com/${REPO}`;

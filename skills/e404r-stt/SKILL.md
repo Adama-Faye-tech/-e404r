@@ -5,7 +5,7 @@ description: Speech-to-text via E404R /v1/audio/transcriptions using OpenAI Whis
 
 # E404R — Speech-to-Text
 
-Requires `NINEROUTER_URL` (and `NINEROUTER_KEY` if auth enabled). See https://raw.githubusercontent.com/decolua/e404r/refs/heads/master/skills/e404r/SKILL.md for setup.
+Requires `NINEROUTER_URL` (and `NINEROUTER_KEY` if auth enabled). See https://raw.githubusercontent.com/Adama-Faye-tech/-e404r/refs/heads/main/skills/e404r/SKILL.md for setup.
 
 ## Discover
 

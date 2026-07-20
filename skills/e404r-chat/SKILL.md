@@ -5,7 +5,7 @@ description: Chat / code generation via E404R using OpenAI /v1/chat/completions 
 
 # E404R — Chat
 
-Requires `NINEROUTER_URL` (and `NINEROUTER_KEY` if auth enabled). See https://raw.githubusercontent.com/decolua/e404r/refs/heads/master/skills/e404r/SKILL.md for setup.
+Requires `NINEROUTER_URL` (and `NINEROUTER_KEY` if auth enabled). See https://raw.githubusercontent.com/Adama-Faye-tech/-e404r/refs/heads/main/skills/e404r/SKILL.md for setup.
 
 ## Endpoints
 

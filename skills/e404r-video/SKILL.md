@@ -5,7 +5,7 @@ description: Generate videos via E404R /v1/videos/generations using xAI Grok Ima
 
 # E404R — Video Generation (xAI Grok Imagine)
 
-Requires `NINEROUTER_URL` (and `NINEROUTER_KEY` if auth enabled). See https://raw.githubusercontent.com/decolua/e404r/refs/heads/master/skills/e404r/SKILL.md for setup.
+Requires `NINEROUTER_URL` (and `NINEROUTER_KEY` if auth enabled). See https://raw.githubusercontent.com/Adama-Faye-tech/-e404r/refs/heads/main/skills/e404r/SKILL.md for setup.
 
 Requires a connected **xAI account** in the E404R dashboard — either **Grok Build OAuth** (SuperGrok / X Premium+ subscription sign-in) or a direct **xAI API key** from console.x.ai. The two are separate auth types with separate billing; the dashboard shows which one each connection uses.
 
