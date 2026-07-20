@@ -47,7 +47,7 @@ export default function Header({ onMenuClick, showMenuButton = true }) {
   };
 
   return (
-    <header className="shrink-0 flex items-center justify-between gap-3 px-4 h-16 bg-[#00a8cc] text-white z-20">
+    <header className="shrink-0 flex items-center justify-between gap-3 px-4 h-16 bg-[#00a8cc] text-white z-20" translate="no">
       {/* Left side: Logo + Hamburger */}
       <div className="flex items-center gap-6 h-full">
         <Link href="/dashboard" className="flex items-center gap-2 h-full" suppressHydrationWarning>

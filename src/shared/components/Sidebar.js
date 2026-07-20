@@ -114,8 +114,8 @@ export default function Sidebar({ onClose }) {
   return (
     <>
       <aside className="flex w-64 flex-col bg-[#2b3c4e] text-white/80 transition-colors duration-300 min-h-full">
-        {/* User Profile Section */}
-        <div className="px-6 py-8 flex flex-col gap-1 border-b border-white/10" suppressHydrationWarning>
+        {/* User Profile Section — translate="no" prevents MS Translator from wrapping text in <font> tags */}
+        <div className="px-6 py-8 flex flex-col gap-1 border-b border-white/10" translate="no" suppressHydrationWarning>
           <div className="text-white font-medium" suppressHydrationWarning>Hi, {displayName || "User"}</div>
           <div className="text-sm text-white/50 flex items-center gap-1 cursor-pointer hover:text-white transition-colors" suppressHydrationWarning>
             Super Admin <span className="material-symbols-outlined text-[14px]">expand_more</span>
